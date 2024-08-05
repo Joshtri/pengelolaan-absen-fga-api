@@ -30,17 +30,7 @@ export const createPesertaController = async (req, res) => {
 export const getPesertaController = async (req, res) => {
     try {
         const peserta = await getPeserta();
-        if (peserta) {
-            return res.status(200).json({
-                success: true,
-                data: peserta,
-            });
-        } else {
-            return res.status(404).json({
-                success: false,
-                message: 'Peserta not found',
-            });
-        }
+        res.status(200).json(peserta)
     } catch (error) {
         console.error(error);
         return res.status(500).json({
