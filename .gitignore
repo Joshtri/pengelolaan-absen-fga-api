@@ -2,3 +2,5 @@ ECHO is on.
 
 node_modules
 .env
+
+test.js

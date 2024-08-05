@@ -9,3 +9,14 @@ export const createPresensi = async(presensiData)=>{
         throw error;
     }
 }
+
+
+export const getPresensi = async()=>{
+    try {
+        const presensi = await Presensi.find();
+        return presensi;
+        
+    } catch (error) {
+        throw error;
+    }
+}

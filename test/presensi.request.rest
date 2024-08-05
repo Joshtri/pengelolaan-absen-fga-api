@@ -1,0 +1,17 @@
+###
+POST http://localhost:5000/api/presensi
+Content-Type: application/json
+
+{
+    "pesertaId": "66b05e5acc2a0e8434092bac",
+    "jam_masuk": "2024-08-03T05:28:16.000Z", 
+    "jam_keluar": "2024-08-03T05:28:16.000Z", 
+    "live_sesi": 1 
+}
+
+###
+GET http://localhost:5000/api/presensi
+
+
+
+

@@ -2,5 +2,13 @@ POST http://localhost:5000/api/peserta
 Content-Type: application/json
 
 {
-    
+  "nama_lengkap": "Nama Lengkap",
+  "nomor_registrasi": "Nomor Registrasi",
+  "nomor_handphone": "085298389192",
+  "provider": "Provider",
+  "email": "Email (yang terdaftar pada digitalent)"
 }
+
+
+###
+GET http://localhost:5000/api/peserta

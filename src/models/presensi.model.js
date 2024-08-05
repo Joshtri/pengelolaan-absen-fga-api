@@ -16,6 +16,10 @@ const presensiSchema = new mongoose.Schema({
     jam_keluar:{
         type:Date,
         required:true
+    },
+    live_sesi:{
+        type:Number,
+        required:false
     }
 },{
     timestamps:true
