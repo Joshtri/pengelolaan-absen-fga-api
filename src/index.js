@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { config } from 'dotenv';
 import connectDB from './config/dbConfig.js';
+import pesertaRoute from './routes/peserta.route.js';
 
 config();
 connectDB();
@@ -23,6 +24,8 @@ app.use(express.json());
 
 
 
+//routes
+app.use('/api', pesertaRoute)
 
 app.listen(PORT,()=>{
     console.log(`run on port : `, PORT);

@@ -1,34 +1,33 @@
 import mongoose from "mongoose";
-import { STRING } from "sequelize";
 
 const pesertaSchema = new mongoose.Schema({
 
     nama_peserta:{
-        type:STRING,
+        type:String,
         required: true,
         trim: true
     },
 
     nomor_registrasi:{
-        type:STRING,
+        type:String,
         required: true,
         
     },
 
     nomor_handphone:{
-        type:STRING,
+        type:String,
         required: true,
         
     },
 
     provider:{
-        type:STRING,
+        type:String,
         required: true,
         
     },
 
     email_peserta:{
-        type:STRING,
+        type:String,
         required:true
     },
     
