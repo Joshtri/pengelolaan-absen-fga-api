@@ -21,7 +21,7 @@ const pesertaSchema = new mongoose.Schema({
         
     },
 
-    nomor_provider:{
+    provider:{
         type:STRING,
         required: true,
         
@@ -31,16 +31,7 @@ const pesertaSchema = new mongoose.Schema({
         type:STRING,
         required:true
     },
-
-    jam_masuk:{
-        type:Date,
-        required:true
-    },
-
-    jam_keluar:{
-        type:Date,
-        required:true
-    }
+    
 })
 
 
