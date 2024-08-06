@@ -29,6 +29,9 @@ app.use(cors({
 app.use(express.json());
 
 
+app.get('/',(req,res)=>{
+    res.json("hello");
+})
 
 //routes
 app.use('/api', pesertaRoute, presensiRoute)
