@@ -20,6 +20,17 @@ const presensiSchema = new mongoose.Schema({
     live_sesi:{
         type:Number,
         required:false
+    },
+    status_kehadiran:{
+        type:String,
+        enum:[
+            'hadir',
+            'alpha',
+            'izin',
+            'sakit'
+        ],
+        required:true,
+        default:'alpha'
     }
 },{
     timestamps:true
