@@ -1,4 +1,4 @@
-import { createPresensi, getPresensi } from '../repositories/presensi.repository.js';
+import { createPresensi, getPresensi, updatePresensiByLiveSesiAndPesertaId } from '../repositories/presensi.repository.js';
 
 // Controller untuk membuat presensi baru
 export const createPresensiController = async (req, res) => {
@@ -61,6 +61,37 @@ export const getPresensiController = async (req, res) => {
                 message: 'presensi not found',
             });
         }
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({
+            success: false,
+            message: 'Server error',
+        });
+    }
+};
+
+
+// Controller to update presensi by pesertaId with a fixed live_sesi value
+export const updatePresensiController = async (req, res) => {
+    try {
+        const { pesertaId } = req.params; // Assuming pesertaId is passed as a URL parameter
+        const updateData = req.body;
+        const liveSesi = 2; // Fixed value for live_sesi
+
+        const updatedPresensi = await updatePresensiByLiveSesiAndPesertaId(liveSesi, pesertaId, updateData);
+
+        if (!updatedPresensi) {
+            return res.status(404).json({
+                success: false,
+                message: 'Presensi not found for the given live_sesi and pesertaId',
+            });
+        }
+
+        return res.json({
+            success: true,
+            message: 'Presensi updated successfully',
+            data: updatedPresensi,
+        });
     } catch (error) {
         console.error(error);
         return res.status(500).json({

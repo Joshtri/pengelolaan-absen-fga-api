@@ -10,8 +10,16 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:5000/api/presensi
+GET http://localhost:5000/api/presensi/
 
 
+###
+PUT http://localhost:5000/api/presensi/66b05e5acc2a0e8434092bae
+Content-Type: application/json
 
+{
+    
+    "jam_masuk": "09:00",
+    "jam_keluar": "17:00"
 
+}

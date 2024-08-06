@@ -20,3 +20,17 @@ export const getPresensi = async()=>{
         throw error;
     }
 }
+
+// Function to update presensi by live_sesi and pesertaId
+export const updatePresensiByLiveSesiAndPesertaId = async (liveSesi, pesertaId, updateData) => {
+    try {
+        const updatedPresensi = await Presensi.findOneAndUpdate(
+            { live_sesi: liveSesi, pesertaId: pesertaId },
+            updateData,
+            { new: true }
+        );
+        return updatedPresensi;
+    } catch (error) {
+        throw error;
+    }
+};
