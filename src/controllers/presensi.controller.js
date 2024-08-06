@@ -6,22 +6,11 @@ export const createPresensiController = async (req, res) => {
         const { pesertaId, jam_masuk, jam_keluar } = req.body;
 
         // Get current date in YYYY-MM-DD format
-        const fixedDate = new Date().toISOString().split('T')[0]; 
-
-        // Parse the times as local time
-        const jamMasukParts = jam_masuk.split(':');
-        const jamKeluarParts = jam_keluar.split(':');
-
-        const jamMasukDate = new Date();
-        jamMasukDate.setHours(jamMasukParts[0], jamMasukParts[1], 0, 0);
-
-        const jamKeluarDate = new Date();
-        jamKeluarDate.setHours(jamKeluarParts[0], jamKeluarParts[1], 0, 0);
 
         const presensiData = {
             pesertaId,
-            jam_masuk: jamMasukDate,
-            jam_keluar: jamKeluarDate,
+            jam_masuk,
+            jam_keluar,
             live_sesi: 1, // or any other value needed
             status_kehadiran: 'hadir'
         };
