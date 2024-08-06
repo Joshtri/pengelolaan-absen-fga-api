@@ -78,6 +78,7 @@ export const updatePresensiController = async (req, res) => {
         const updateData = req.body;
         const liveSesi = 2; // Fixed value for live_sesi
 
+        updateData.status_kehadiran = "hadir";
         const updatedPresensi = await updatePresensiByLiveSesiAndPesertaId(liveSesi, pesertaId, updateData);
 
         if (!updatedPresensi) {
