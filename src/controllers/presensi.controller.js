@@ -17,7 +17,7 @@ export const createPresensiController = async (req, res) => {
             pesertaId,
             jam_masuk,
             jam_keluar,
-            live_sesi: 1, // or any other value needed
+            live_sesi: 2, // or any other value needed
             status_kehadiran: 'hadir'
         };
 
