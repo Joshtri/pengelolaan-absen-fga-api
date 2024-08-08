@@ -1,6 +1,7 @@
 import { createPresensi, getPresensi, updatePresensiByLiveSesiAndPesertaId } from '../repositories/presensi.repository.js';
 
 // Controller untuk membuat presensi baru
+// tidak dipakai.pakai fungsi dibawah.
 export const createPresensiController = async (req, res) => {
     try {
         const { pesertaId, jam_masuk, jam_keluar } = req.body;
@@ -76,7 +77,7 @@ export const updatePresensiController = async (req, res) => {
     try {
         const { pesertaId } = req.params; // Assuming pesertaId is passed as a URL parameter
         const updateData = req.body;
-        const liveSesi = 4; // Fixed value for live_sesi
+        const liveSesi = 3; // Fixed value for live_sesi
 
         updateData.status_kehadiran = "hadir";
         const updatedPresensi = await updatePresensiByLiveSesiAndPesertaId(liveSesi, pesertaId, updateData);
