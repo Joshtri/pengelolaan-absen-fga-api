@@ -78,7 +78,7 @@ export const updatePresensiController = async (req, res) => {
         const { pesertaId } = req.params; // Assuming pesertaId is passed as a URL parameter
         const updateData = req.body;
         //sementara manual dlu seperti ini, nanti baru dibuat by system input.
-        const liveSesi = 7; // Fixed value for live_sesi
+        const liveSesi = 8; // Fixed value for live_sesi
 
         updateData.status_kehadiran = "hadir";
         const updatedPresensi = await updatePresensiByLiveSesiAndPesertaId(liveSesi, pesertaId, updateData);
