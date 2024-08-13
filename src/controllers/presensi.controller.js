@@ -1,4 +1,5 @@
 import { createPresensi, getPresensi, updatePresensiByLiveSesiAndPesertaId } from '../repositories/presensi.repository.js';
+import { getSetSesi } from '../repositories/setSesi.repository.js';
 
 // Controller untuk membuat presensi baru
 // tidak dipakai.pakai fungsi dibawah.
@@ -77,8 +78,21 @@ export const updatePresensiController = async (req, res) => {
     try {
         const { pesertaId } = req.params; // Assuming pesertaId is passed as a URL parameter
         const updateData = req.body;
+
+
+        // Mengambil data terbaru dari SetSesi
+        const latestSetSesi = await getSetSesi();
+
+        if (latestSetSesi.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: 'No SetSesi data found',
+            });
+        }
+
         //sementara manual dlu seperti ini, nanti baru dibuat by system input.
-        const liveSesi = 8; // Fixed value for live_sesi
+        const liveSesi = latestSetSesi[0].sesiActive; // Mengambil nilai live_sesi dari data terbaru
+        // const liveSesi = 8; // Fixed value for live_sesi
 
         updateData.status_kehadiran = "hadir";
         const updatedPresensi = await updatePresensiByLiveSesiAndPesertaId(liveSesi, pesertaId, updateData);
@@ -103,3 +117,18 @@ export const updatePresensiController = async (req, res) => {
         });
     }
 };
+
+
+
+export const sesiActiveGet = async(req,res)=>{
+    try {
+        const latestSetSesi = await getSetSesi();
+        if (latestSetSesi.length > 0) {
+            res.status(200).json(latestSetSesi[0]); // Mengembalikan data terbaru
+        } else {
+            res.status(404).json({ message: "No data found" });
+        }
+    } catch (error) {
+        res.status(500).json({ message: "Error retrieving data", error: error.message });
+    }
+}
